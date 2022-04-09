@@ -1,103 +1,69 @@
 import React, { useState, useEffect } from "react";
-// import { Routes, Route, useNavigate } from "react-router-dom";
-// import NavBar from "./NavBar";
-// import LoginPage from "./LoginPage";
-// import GuidePage from "./GuidePage";
-// import GuideContainer from "./GuideContainer";
-// import UserPage from "./UserPage";
-// import HomePage from "./HomePage";
-// import SignupPage from "./SignupPage";
-// import LogOut from "./LogOut";
-// import GuideCard from "./GuideCard";
-// import "../index.css";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import NavBar from "./NavBar";
+import LoginPage from "./LoginPage";
+import GuidePage from "./GuidePage";
+import GuideContainer from "./GuideContainer";
+import UserPage from "./UserPage";
+import HomePage from "./HomePage";
+import SignupPage from "./SignupPage";
+import LogOut from "./LogOut";
+import GuideCard from "./GuideCard";
+import "../index.css";
 
-const App = () => {
-  return <div>Hello world</div>;
-};
+function App() {
+  const [user, setUser] = useState(null);
+  // useEffect(() => {
+  //   fetch("/me").then((r) => {
+  //     if (r.ok) {
+  //       r.json().then((data) => setUser(data));
+  //     }
+  //   });
+  // }, []);
 
-// function App() {
-//   const [user, setUser] = useState(null);
-//   useEffect(() => {
-//     fetch("/me").then((r) => {
-//       if (r.ok) {
-//         r.json().then((data) => setUser(data));
-//       }
-//     });
-//   }, []);
+  const [guides, setGuides] = useState([]);
 
-//   const [recipes, setRecipes] = useState([]);
-//   useEffect(() => {
-//     fetch(`/recipes`)
-//       .then((r) => r.json())
-//       .then(setRecipes);
-//   }, [user]);
+  const navigate = useNavigate();
 
-//   const [reviews, setReviews] = useState([]);
-//   useEffect(() => {
-//     fetch("/reviews")
-//       .then((r) => r.json())
-//       .then(setReviews);
-//   }, [user]);
+  return (
+    <div className="App">
+      {user && <NavBar />}
+      <Routes>
+        <Route
+          path="/login"
+          element={<LoginPage setUser={setUser} navigate={navigate} />}
+        />
 
-//   const navigate = useNavigate();
+        <Route
+          path="/signup"
+          element={<SignupPage navigate={navigate} setUser={setUser} />}
+        />
 
-//   let recipesSorted = [...recipes]
-//     .sort((a, b) => b.review_count - a.review_count)
-//     .splice(0, 3);
-//   const topRecipes = recipesSorted.map((r) => (
-//     <RecipeCard key={r.id} r={r} fromRecipes={false} />
-//   ));
+        <Route
+          path="/guides/:id"
+          element={
+            <GuidePage
+              user={user}
+              setUser={setUser}
+              guides={guides}
+              setGuides={setGuides}
+            />
+          }
+        />
 
-//   return (
-//     <div className="App">
-//       {user && <NavBar />}
-//       <Routes>
-//         <Route
-//           path="/login"
-//           element={<LoginPage setUser={setUser} navigate={navigate} />}
-//         />
+        <Route path="/guides" element={<GuideContainer guides={guides} />} />
 
-//         <Route
-//           path="/signup"
-//           element={<SignupPage navigate={navigate} setUser={setUser} />}
-//         />
+        <Route path="/me" element={<UserPage user={user} guides={guides} />} />
 
-//         <Route
-//           path="/recipes/:id"
-//           element={
-//             <RecipePage
-//               recipes={recipes}
-//               user={user}
-//               setRecipes={setRecipes}
-//               setUser={setUser}
-//               reviews={reviews}
-//               setReviews={setReviews}
-//             />
-//           }
-//         />
+        <Route
+          path="/logout"
+          element={<LogOut setUser={setUser} navigate={navigate} />}
+        />
 
-//         <Route
-//           path="/recipes"
-//           element={<RecipesContainer recipes={recipes} />}
-//         />
-
-//         <Route
-//           path="/me"
-//           element={<UserPage user={user} setUser={setUser} reviews={reviews} />}
-//         />
-
-//         <Route
-//           path="/logout"
-//           element={<LogOut setUser={setUser} navigate={navigate} />}
-//         />
-
-//         <Route
-//           path="/"
-//           element={<HomePage user={user} topRecipes={topRecipes} />}
-//         />
-//       </Routes>
-//     </div>
-//   );
-// }
+        <Route path="/" element={<HomePage user={user} />} />
+      </Routes>
+    </div>
+  );
+}
 
 export default App;
