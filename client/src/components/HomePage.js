@@ -1,14 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-function HomePage({ user, topRecipes }) {
+function HomePage({ user }) {
   return (
     <div align="center" className="homepage">
       <h1> MapleBoss </h1>
       <div className="home-container">
-        {/* <img src={require("../images/EatME1.jpg")} alt="eatme logo" /> */}
         <p>Welcome to MapleBoss</p>
-        {/* <img src={require("../images/cookie.gif")} alt="cookie monster" /> */}
       </div>
       {!user && (
         <div className="signup-login-container">
@@ -21,7 +19,7 @@ function HomePage({ user, topRecipes }) {
         </div>
       )}
       <h3>Top Bosses</h3>
-      <div className="top-recipe-container">{topRecipes}</div>
+      <div className="top-recipe-container"></div>
     </div>
   );
 }

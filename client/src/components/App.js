@@ -13,15 +13,20 @@ import "../index.css";
 
 function App() {
   const [user, setUser] = useState(null);
-  // useEffect(() => {
-  //   fetch("/me").then((r) => {
-  //     if (r.ok) {
-  //       r.json().then((data) => setUser(data));
-  //     }
-  //   });
-  // }, []);
+  useEffect(() => {
+    fetch("/me").then((r) => {
+      if (r.ok) {
+        r.json().then((data) => setUser(data));
+      }
+    });
+  }, []);
 
   const [guides, setGuides] = useState([]);
+  useEffect(() => {
+    fetch(`/guides`)
+      .then((r) => r.json())
+      .then(setGuides);
+  }, [user]);
 
   const navigate = useNavigate();
 
