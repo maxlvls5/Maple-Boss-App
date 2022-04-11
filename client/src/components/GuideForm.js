@@ -10,12 +10,17 @@ function NewGuideForm(props) {
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
+    const toSubmit = {
+      guide: guide,
+      boss_id: boss.id,
+      user_id: id,
+    };
     fetch("/guides", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(guideData),
+      body: JSON.stringify(toSubmit),
     })
       .then((r) => r.json())
       .then((guide) => {

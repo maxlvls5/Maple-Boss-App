@@ -19,7 +19,7 @@ function HomePage({ user }) {
         </div>
       )}
       <h3>Top Bosses</h3>
-      <div className="top-recipe-container"></div>
+      <div className="container"></div>
     </div>
   );
 }

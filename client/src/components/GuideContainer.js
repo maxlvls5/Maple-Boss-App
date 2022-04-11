@@ -7,7 +7,7 @@ function GuideContainer(props) {
   return (
     <div>
       <h1 align="center">guides</h1>
-      <GuideForm />
+      <GuideForm props={props} />
       {/* <div className="container">{recipeCards}</div> */}
     </div>
   );
