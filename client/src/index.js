@@ -9,7 +9,9 @@ import store from "./redux/store";
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </BrowserRouter>,
   document.getElementById("root")
 );

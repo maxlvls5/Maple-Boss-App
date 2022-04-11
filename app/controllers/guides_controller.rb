@@ -1,5 +1,6 @@
 class GuidesController < ApplicationController
     before_action :authorized
+    skip_before_action :authorized, only: [:index, :create]
 
     def index
         guides = Guide.all
@@ -8,7 +9,19 @@ class GuidesController < ApplicationController
 
 
     def show
-        reviews = Guide.all.where("boss_id = ?", params[:recipe_id])
-        render json: reviews, status: :ok
+        guides = Guide.all.where("boss_id = ?", params[:boss_id])
+        render json: guides, status: :ok
+    end
+
+     def create 
+        guide = Guide.create!(guide_params)
+        render json: guide, status: :created
+
+    end
+
+    private
+
+    def guide_params
+        params.permit(:guide, :reward)
     end
 end

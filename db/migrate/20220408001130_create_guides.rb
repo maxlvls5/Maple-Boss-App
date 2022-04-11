@@ -1,7 +1,6 @@
 class CreateGuides < ActiveRecord::Migration[6.1]
   def change
     create_table :guides do |t|
-      t.string :boss
       t.string :guide
       t.string :reward
       t.references :boss, null: false, foreign_key: true

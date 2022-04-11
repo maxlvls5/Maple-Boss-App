@@ -8,10 +8,12 @@ import UserPage from "./UserPage";
 import HomePage from "./HomePage";
 import SignupPage from "./SignupPage";
 import LogOut from "./LogOut";
+import { connect } from "react-redux";
+import { addGuide } from "../redux/actions";
 import GuideCard from "./GuideCard";
 import "../index.css";
 
-function App() {
+function App(props) {
   const [user, setUser] = useState(null);
   useEffect(() => {
     fetch("/me").then((r) => {
@@ -25,7 +27,13 @@ function App() {
   useEffect(() => {
     fetch(`/guides`)
       .then((r) => r.json())
-      .then(setGuides);
+      .then((guides) => {
+        setGuides(guides);
+        console.log(guides);
+        console.log(props);
+        guides.forEach(props.addGuide);
+        console.log(props.state);
+      });
   }, [user]);
 
   const navigate = useNavigate();
@@ -70,5 +78,17 @@ function App() {
     </div>
   );
 }
+const mapStateToProps = (state) => {
+  return {
+    guides: state.guides,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addGuide: (guide) => dispatch(addGuide(guide)),
+  };
+};
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+//mapDispatchToProps (addGUide) adds a single guide at a time
