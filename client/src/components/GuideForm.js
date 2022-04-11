@@ -3,18 +3,25 @@ import { connect } from "react-redux";
 import { addGuide } from "../redux/actions";
 
 function NewGuideForm(props) {
-  const [guideData, setGuideData] = useState({ guide: "" });
-  const handleOnChange = (event) => {
-    setGuideData({ guide: event.target.value });
+  console.log(props.bosses);
+  const [guideDetails, setGuideDetails] = useState("");
+  const [bossId, setBossId] = useState(0);
+  const handleBossChange = (event) => {
+    setBossId(event.target.value);
+  };
+  const handleGuideChange = (event) => {
+    setGuideDetails(event.target.value);
   };
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
     const toSubmit = {
-      guide: guide,
-      boss_id: boss.id,
-      user_id: id,
+      details: guideDetails,
+      reward: "HIGH VALUE ITEMS",
+      boss_id: parseInt(bossId),
+      user_id: props.user.id,
     };
+
     fetch("/guides", {
       method: "POST",
       headers: {
@@ -25,7 +32,7 @@ function NewGuideForm(props) {
       .then((r) => r.json())
       .then((guide) => {
         props.addGuide(guide);
-        setGuideData({ guide: "" });
+        setGuideDetails("");
       });
   };
 
@@ -33,10 +40,20 @@ function NewGuideForm(props) {
     <div>
       <h2>New Guide Form:</h2>
       <form onSubmit={handleOnSubmit}>
+        <select value={bossId} onChange={handleBossChange}>
+          <option key={0} value={0}>
+            select a boss
+          </option>
+          {props.bosses.map((boss) => (
+            <option key={boss.id} value={boss.id}>
+              {boss.name}
+            </option>
+          ))}
+        </select>
         <textarea
           placeholder="Guide Content..."
-          value={guideData.guide}
-          onChange={handleOnChange}
+          value={guideDetails}
+          onChange={handleGuideChange}
         ></textarea>
         <input type="submit" />
       </form>
@@ -44,12 +61,19 @@ function NewGuideForm(props) {
   );
 }
 
+const mapStateToProps = (state) => {
+  return {
+    bosses: state.bosses,
+    user: state.user,
+  };
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
     addGuide: (guide) => dispatch(addGuide(guide)),
   };
 };
 
-export default connect(null, mapDispatchToProps)(NewGuideForm);
+export default connect(mapStateToProps, mapDispatchToProps)(NewGuideForm);
 
 // dispatch action are called to manipulate state as opposed to getting state

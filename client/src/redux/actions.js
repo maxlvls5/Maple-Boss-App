@@ -1,10 +1,31 @@
 function addGuide(guide) {
   return {
     type: "ADD_GUIDE",
-    payload: { text: guide.text, id: guide.id },
+    payload: guide,
   };
 }
 
-export { addGuide };
+function fetchGuides(guides) {
+  return {
+    type: "FETCH_GUIDES",
+    payload: guides,
+  };
+}
+
+function fetchBosses(bosses) {
+  return {
+    type: "FETCH_BOSSES",
+    payload: bosses,
+  };
+}
+
+function loginUser(user) {
+  return {
+    type: "LOGIN_USER",
+    payload: user,
+  };
+}
+
+export { addGuide, fetchGuides, fetchBosses, loginUser };
 
 // actions are function we call to manipulate state

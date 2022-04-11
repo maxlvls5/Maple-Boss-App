@@ -1,5 +1,7 @@
 class BossesController < ApplicationController
-     
+    skip_before_action :authorized, only: :index
+
+
     def index
         bosses = Boss.all
         render json: bosses, include: :guides, status: :ok

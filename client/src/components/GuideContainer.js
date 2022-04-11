@@ -4,8 +4,10 @@ import GuideForm from "./GuideForm";
 import GuideCard from "./GuideCard";
 
 function GuideContainer(props) {
+  console.log(props.guides);
   return (
     <div>
+      <h1>Bosses</h1>
       <h1 align="center">guides</h1>
       <GuideForm props={props} />
       {/* <div className="container">{recipeCards}</div> */}

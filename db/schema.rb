@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2022_04_08_001130) do
   end
 
   create_table "guides", force: :cascade do |t|
-    t.string "guide"
+    t.string "details"
     t.string "reward"
     t.bigint "boss_id", null: false
     t.bigint "user_id", null: false

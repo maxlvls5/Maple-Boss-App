@@ -3,17 +3,35 @@ import { combineReducers } from "redux";
 const guidesReducer = (state = [], action) => {
   switch (action.type) {
     case "ADD_GUIDE":
-      return [...state, { text: action.payload.text, id: action.payload.id }];
-    case "SHOW_GUIDE":
-      return state.find((guide) => (guide.id = action.payload.id));
-
+      return [...state, { ...action.payload }];
+    case "FETCH_GUIDES":
+      return [...action.payload];
     default:
       return state;
   }
 };
 
+const bossesReducer = (state = [], action) => {
+  switch (action.type) {
+    case "FETCH_BOSSES":
+      return [...action.payload];
+    default:
+      return state;
+  }
+};
+
+const userReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "LOGIN_USER":
+      return action.payload;
+    default:
+      return state;
+  }
+};
 const rootReducer = combineReducers({
   guides: guidesReducer,
+  bosses: bossesReducer,
+  user: userReducer,
 });
 
 export default rootReducer;

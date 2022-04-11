@@ -22,6 +22,6 @@ class GuidesController < ApplicationController
     private
 
     def guide_params
-        params.permit(:guide, :reward)
+        params.permit(:details, :reward, :boss_id, :user_id)
     end
 end

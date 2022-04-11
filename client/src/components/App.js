@@ -9,30 +9,40 @@ import HomePage from "./HomePage";
 import SignupPage from "./SignupPage";
 import LogOut from "./LogOut";
 import { connect } from "react-redux";
-import { addGuide } from "../redux/actions";
+import { fetchGuides, fetchBosses, loginUser } from "../redux/actions";
 import GuideCard from "./GuideCard";
 import "../index.css";
 
 function App(props) {
   const [user, setUser] = useState(null);
+  const loginUser = (user) => {
+    setUser(user);
+    props.loginUser(user);
+  };
   useEffect(() => {
     fetch("/me").then((r) => {
       if (r.ok) {
-        r.json().then((data) => setUser(data));
+        r.json().then((data) => {
+          loginUser(data);
+        });
       }
     });
   }, []);
 
-  const [guides, setGuides] = useState([]);
+  useEffect(() => {
+    fetch(`/bosses`)
+      .then((r) => r.json())
+      .then((bosses) => {
+        console.log(bosses);
+        props.fetchBosses(bosses);
+      });
+  }, [user]);
+
   useEffect(() => {
     fetch(`/guides`)
       .then((r) => r.json())
       .then((guides) => {
-        setGuides(guides);
-        console.log(guides);
-        console.log(props);
-        guides.forEach(props.addGuide);
-        console.log(props.state);
+        props.fetchGuides(guides);
       });
   }, [user]);
 
@@ -44,29 +54,22 @@ function App(props) {
       <Routes>
         <Route
           path="/login"
-          element={<LoginPage setUser={setUser} navigate={navigate} />}
+          element={<LoginPage setUser={loginUser} navigate={navigate} />}
         />
 
         <Route
           path="/signup"
-          element={<SignupPage navigate={navigate} setUser={setUser} />}
+          element={<SignupPage navigate={navigate} setUser={loginUser} />}
         />
 
         <Route
           path="/guides/:id"
-          element={
-            <GuidePage
-              user={user}
-              setUser={setUser}
-              guides={guides}
-              setGuides={setGuides}
-            />
-          }
+          element={<GuidePage user={user} setUser={setUser} />}
         />
 
-        <Route path="/guides" element={<GuideContainer guides={guides} />} />
+        <Route path="/guides" element={<GuideContainer />} />
 
-        <Route path="/me" element={<UserPage user={user} guides={guides} />} />
+        <Route path="/me" element={<UserPage user={user} />} />
 
         <Route
           path="/logout"
@@ -85,7 +88,9 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    addGuide: (guide) => dispatch(addGuide(guide)),
+    fetchGuides: (guides) => dispatch(fetchGuides(guides)),
+    fetchBosses: (bosses) => dispatch(fetchBosses(bosses)),
+    loginUser: (user) => dispatch(loginUser(user)),
   };
 };
 
