@@ -19,6 +19,12 @@ class GuidesController < ApplicationController
 
     end
 
+    def update 
+        guide = Guide.find(params[:id])
+        guide.update(details: params[:details])
+        render json: guide, status: :updated
+    end
+
     private
 
     def guide_params
