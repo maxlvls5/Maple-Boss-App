@@ -3,13 +3,11 @@
 one:
   boss: MyString
   guide: MyString
-  reward: MyString
   boss: one
   user: one
 
 two:
   boss: MyString
   guide: MyString
-  reward: MyString
   boss: two
   user: two

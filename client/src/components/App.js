@@ -33,7 +33,6 @@ function App(props) {
     fetch(`/bosses`)
       .then((r) => r.json())
       .then((bosses) => {
-        console.log(bosses);
         props.fetchBosses(bosses);
       });
   }, [user]);
@@ -62,10 +61,7 @@ function App(props) {
           element={<SignupPage navigate={navigate} setUser={loginUser} />}
         />
 
-        <Route
-          path="/guides/:id"
-          element={<GuidePage user={user} setUser={setUser} />}
-        />
+        <Route path="/guides/:id" element={<GuidePage />} />
 
         <Route path="/guides" element={<GuideContainer />} />
 

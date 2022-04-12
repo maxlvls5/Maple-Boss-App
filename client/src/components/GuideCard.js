@@ -1,12 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function GuideCard({ r, fromRecipes }) {
+function GuideCard({ guide }) {
+  console.log(guide);
   return (
-    <Link to={fromRecipes ? `${r.id}` : `/recipes/${r.id}`} className="card">
-      <h4>{r.name}</h4>
-      <img src={r.image_url} alt={r.name} />
-    </Link>
+    <div>
+      <Link to={`/guides/${guide.id}`} className="card">
+        <h4>{guide.title}</h4>
+      </Link>
+    </div>
   );
 }
 

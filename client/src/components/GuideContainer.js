@@ -9,8 +9,10 @@ function GuideContainer(props) {
     <div>
       <h1>Bosses</h1>
       <h1 align="center">guides</h1>
+      {props.guides.map((guide) => (
+        <GuideCard key={guide.id} guide={guide} />
+      ))}
       <GuideForm props={props} />
-      {/* <div className="container">{recipeCards}</div> */}
     </div>
   );
 }
@@ -18,6 +20,7 @@ function GuideContainer(props) {
 // grabbin state
 const mapStateToProps = (state) => {
   return {
+    user: state.user,
     guides: state.guides,
   };
 };

@@ -3,9 +3,14 @@ import { connect } from "react-redux";
 import { addGuide } from "../redux/actions";
 
 function NewGuideForm(props) {
-  console.log(props.bosses);
+  const [guideTitle, setGuideTitle] = useState("");
   const [guideDetails, setGuideDetails] = useState("");
   const [bossId, setBossId] = useState(0);
+
+  const handleTitleChange = (event) => {
+    setGuideTitle(event.target.value);
+  };
+
   const handleBossChange = (event) => {
     setBossId(event.target.value);
   };
@@ -16,8 +21,8 @@ function NewGuideForm(props) {
   const handleOnSubmit = (event) => {
     event.preventDefault();
     const toSubmit = {
+      title: guideTitle,
       details: guideDetails,
-      reward: "HIGH VALUE ITEMS",
       boss_id: parseInt(bossId),
       user_id: props.user.id,
     };
@@ -32,6 +37,8 @@ function NewGuideForm(props) {
       .then((r) => r.json())
       .then((guide) => {
         props.addGuide(guide);
+        setBossId(0);
+        setGuideTitle("");
         setGuideDetails("");
       });
   };
@@ -50,6 +57,8 @@ function NewGuideForm(props) {
             </option>
           ))}
         </select>
+        <input type="text" onChange={handleTitleChange} value={guideTitle} />
+
         <textarea
           placeholder="Guide Content..."
           value={guideDetails}

@@ -1,3 +1,3 @@
 class GuideSerializer < ActiveModel::Serializer
-  attributes :id, :details, :reward, :boss_id, :user_id
+  attributes :id, :details, :boss_id, :user_id, :title
 end
