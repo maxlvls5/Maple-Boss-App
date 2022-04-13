@@ -1,6 +1,6 @@
 class GuidesController < ApplicationController
     before_action :authorized
-    skip_before_action :authorized, only: [:index, :create, :show, :update]
+    skip_before_action :authorized, only: [:index, :create, :show, :update, :destroy]
 
     def index
         guides = Guide.all
@@ -23,6 +23,14 @@ class GuidesController < ApplicationController
         guide = Guide.find(params[:id])
         guide.update(update_params)
         render json: guide, status: :ok
+    end
+
+    def destroy
+        review = Guide.find(params[:id]).destroy
+        guide_id = params[:id]
+        render json: guide_id, status: :ok
+     
+        
     end
 
     private

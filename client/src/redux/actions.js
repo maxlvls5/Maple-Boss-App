@@ -19,6 +19,13 @@ function updateGuide(guide) {
   };
 }
 
+function deleteGuide(guideId) {
+  return {
+    type: "DELETE_GUIDE",
+    payload: guideId,
+  };
+}
+
 function fetchBosses(bosses) {
   return {
     type: "FETCH_BOSSES",
@@ -33,7 +40,14 @@ function loginUser(user) {
   };
 }
 
-export { addGuide, fetchGuides, fetchBosses, loginUser, updateGuide };
+export {
+  addGuide,
+  fetchGuides,
+  fetchBosses,
+  loginUser,
+  updateGuide,
+  deleteGuide,
+};
 
 // actions are function we call to manipulate state
 // payload is what is used to update state

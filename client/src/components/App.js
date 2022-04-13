@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 import NavBar from "./NavBar";
 import LoginPage from "./LoginPage";
 import GuidePage from "./GuidePage";
@@ -61,11 +61,17 @@ function App(props) {
           element={<SignupPage navigate={navigate} setUser={loginUser} />}
         />
 
-        <Route path="/guides/:id" element={<GuidePage />} />
+        <Route
+          path="/guides/:id"
+          element={user ? <GuidePage /> : <Navigate replace to="/" />}
+        />
 
         <Route path="/guides" element={<GuideContainer />} />
 
-        <Route path="/me" element={<UserPage user={user} />} />
+        <Route
+          path="/me"
+          element={user ? <UserPage /> : <Navigate replace to="/" />}
+        />
 
         <Route
           path="/logout"
