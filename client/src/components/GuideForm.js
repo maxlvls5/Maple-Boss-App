@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { addGuide } from "../redux/actions";
+import { addGuide, updateGuide } from "../redux/actions";
 
 function NewGuideForm(props) {
-  const [guideTitle, setGuideTitle] = useState("");
-  const [guideDetails, setGuideDetails] = useState("");
-  const [bossId, setBossId] = useState(0);
+  console.log(props);
+  const editForm = !!props.currentGuide;
+  const currentGuide = editForm
+    ? { ...props.currentGuide }
+    : { title: "", details: "", boss_id: 0 };
+  const [guideTitle, setGuideTitle] = useState(currentGuide.title);
+  const [guideDetails, setGuideDetails] = useState(currentGuide.details);
+  const [bossId, setBossId] = useState(currentGuide.boss_id);
 
   const handleTitleChange = (event) => {
     setGuideTitle(event.target.value);
@@ -26,6 +31,22 @@ function NewGuideForm(props) {
       boss_id: parseInt(bossId),
       user_id: props.user.id,
     };
+    if (editForm) {
+      fetch("/guides/" + currentGuide.id, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(toSubmit),
+      })
+        .then((r) => r.json())
+        .then((guide) => {
+          props.setCurrentGuide(guide);
+          props.updateGuide(guide);
+          props.setEditMode(false);
+        });
+      return;
+    }
 
     fetch("/guides", {
       method: "POST",
@@ -79,6 +100,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    updateGuide: (guide) => dispatch(updateGuide(guide)),
     addGuide: (guide) => dispatch(addGuide(guide)),
   };
 };

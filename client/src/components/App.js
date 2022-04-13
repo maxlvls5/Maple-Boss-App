@@ -10,7 +10,7 @@ import SignupPage from "./SignupPage";
 import LogOut from "./LogOut";
 import { connect } from "react-redux";
 import { fetchGuides, fetchBosses, loginUser } from "../redux/actions";
-import GuideCard from "./GuideCard";
+
 import "../index.css";
 
 function App(props) {

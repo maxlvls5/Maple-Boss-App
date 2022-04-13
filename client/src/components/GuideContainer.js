@@ -12,7 +12,7 @@ function GuideContainer(props) {
       {props.guides.map((guide) => (
         <GuideCard key={guide.id} guide={guide} />
       ))}
-      <GuideForm props={props} />
+      <GuideForm />
     </div>
   );
 }
