@@ -6,12 +6,13 @@ import GuideCard from "./GuideCard";
 function GuideContainer(props) {
   console.log(props.guides);
   return (
-    <div>
-      <h1>Bosses</h1>
+    <div className="glass">
       <h1 align="center">guides</h1>
-      {props.guides.map((guide) => (
-        <GuideCard key={guide.id} guide={guide} />
-      ))}
+      <div>
+        {props.guides.map((guide) => (
+          <GuideCard key={guide.id} guide={guide} />
+        ))}
+      </div>
       <GuideForm />
     </div>
   );

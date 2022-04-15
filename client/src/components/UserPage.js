@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 function UserPage(props) {
   console.log(props);
   return (
-    <div>
+    <div className="glass">
       <h1 align="center">user's Page</h1>
       {props.guides.map((guide) => (
         <GuideCard key={guide.id} guide={guide} />

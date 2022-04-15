@@ -34,7 +34,7 @@ function LoginPage({ setUser, navigate }) {
         {/* <img src={require("../images/eatme_login.png")} alt="eatme_login" /> */}
       </div>
       <h1 align="center">Welcome Back Gamer</h1>
-      <div className="form">
+      <div className="glass">
         <form className="login-form" onSubmit={(e) => handleLogin(e)}>
           <label>Username</label>
           <input

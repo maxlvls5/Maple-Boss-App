@@ -4,8 +4,14 @@ import { NavLink } from "react-router-dom";
 function HomePage({ user }) {
   return (
     <div align="center" className="homepage">
-      <h1> MapleBoss </h1>
+      {/* <h1> MapleBoss </h1> */}
       <div className="home-container">
+        <img
+          src={
+            "https://res.cloudinary.com/dtglqdhwm/image/upload/v1649950525/maple_obpjbi.jpg"
+          }
+          alt="logo"
+        />
         <p>Welcome to MapleBoss</p>
       </div>
       {!user && (
@@ -25,3 +31,5 @@ function HomePage({ user }) {
 }
 
 export default HomePage;
+
+//

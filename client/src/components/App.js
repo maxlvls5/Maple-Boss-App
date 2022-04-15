@@ -78,7 +78,7 @@ function App(props) {
           element={<LogOut setUser={setUser} navigate={navigate} />}
         />
 
-        <Route path="/" element={<HomePage user={user} />} />
+        <Route path="/" element={<HomePage />} />
       </Routes>
     </div>
   );
@@ -99,3 +99,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 //mapDispatchToProps (addGUide) adds a single guide at a time
+// *check useSelector / dispatch
