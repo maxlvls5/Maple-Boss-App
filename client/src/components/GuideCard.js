@@ -6,7 +6,7 @@ function GuideCard({ guide }) {
   console.log(guide);
   return (
     <div className="glass2">
-      <img src={guideIMG} alt="guide img" />
+      <img className="newguideimg" src={guideIMG} alt="guide img" />
       <div className="container">
         <Link to={`/guides/${guide.id}`} className="card">
           <h4>{guide.title}</h4>

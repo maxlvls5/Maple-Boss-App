@@ -38,7 +38,7 @@ function GuidePage(props) {
   console.log(guide);
 
   return (
-    <div>
+    <div className="glass">
       {props.user?.id !== guide.user_id ? (
         ""
       ) : editMode ? (
@@ -56,10 +56,15 @@ function GuidePage(props) {
         <button onClick={handleDeleteClick}> DELETE THIS GUIDE! </button>
       )}
       <img
+        className="glass2"
         src={guide.boss && guide.boss.image}
         alt={guide.boss && guide.boss.name}
       />
-      <h1>{guide.title}</h1> :<h1>{guide.boss && guide.boss.name}</h1>
+      <h1 className="guide-title">{guide.title}</h1>
+      {/* <h1>{guide.boss && guide.boss.name} -</h1>
+      <h4>💠 Level:{guide.boss.level}</h4>
+      <h4>❤️ Total HP:{guide.boss.hp}</h4>
+      <h5>⚔️ Boss Drops: {guide.boss.drop}</h5> */}
       <p>{guide.details}</p>
     </div>
   );

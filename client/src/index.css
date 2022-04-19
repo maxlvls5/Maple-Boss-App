@@ -5,6 +5,17 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("https://images5.alphacoders.com/953/thumb-1920-953487.png");
+
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  background-attachment: fixed;
 }
 
 code {
@@ -36,33 +47,6 @@ html {
   height: 100%;
 }
 
-body {
-  background-image: url("https://images5.alphacoders.com/953/thumb-1920-953487.png");
-
-  height: 100%;
-
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  background-attachment: fixed;
-}
-
-.home .glass2 img {
-  position: absolute;
-  top: 20px;
-  left: -100px;
-  opacity: 0.9;
-  overflow: hidden;
-}
-
-.home .glass2 {
-  overflow: hidden;
-  padding-left: 80px;
-}
-
 .home-container > img {
   border-radius: 30px;
   max-width: 75%;
@@ -70,4 +54,44 @@ body {
 
 .home-container > p {
   max-width: 75%;
+}
+
+.newguideimg {
+  width: 100px;
+  padding-right: 10px;
+}
+
+.glass2 {
+  display: flex;
+}
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-label {
+  color: black;
+  font-weight: bold;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+}
+
+.guide-title {
+  text-decoration: underline;
+}
+
+.Signup {
+  padding-top: 20px;
+}
+
+.guide-form {
+  display: flex;
+  flex-direction: row;
+}
+
+.submit-button {
+  display: flex;
 }

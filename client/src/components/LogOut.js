@@ -1,4 +1,6 @@
 import React from "react";
+import goodBye from "../goodBye.gif";
+import { Button, Segment } from "semantic-ui-react";
 
 function LogOut({ navigate, setUser }) {
   const handleClick = () => {
@@ -18,12 +20,17 @@ function LogOut({ navigate, setUser }) {
 
   return (
     <div className="goodbye">
-      <h1 align="center">LogOut</h1>
-      <div align="center" className="eatme-logout">
-        {/* <img src={require("../images/eatme_logout.png")} alt="goodbye photo" /> */}
-      </div>
+      <h1 align="center">Cya Later Gamer</h1>
+
+      <img className="goodBye-img" src={goodBye} alt="goodbye img" />
+
       <div align="center" className="logout">
-        <button onClick={handleClick}>LogOut</button>
+        {/* <button onClick={handleClick}>LogOut</button> */}
+        <Segment inverted>
+          <Button onClick={handleClick} inverted color="blue">
+            Logout
+          </Button>
+        </Segment>
       </div>
     </div>
   );

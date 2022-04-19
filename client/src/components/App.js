@@ -14,16 +14,11 @@ import { fetchGuides, fetchBosses, loginUser } from "../redux/actions";
 import "../index.css";
 
 function App(props) {
-  const [user, setUser] = useState(null);
-  const loginUser = (user) => {
-    setUser(user);
-    props.loginUser(user);
-  };
   useEffect(() => {
     fetch("/me").then((r) => {
       if (r.ok) {
         r.json().then((data) => {
-          loginUser(data);
+          props.loginUser(data);
         });
       }
     });
@@ -35,7 +30,7 @@ function App(props) {
       .then((bosses) => {
         props.fetchBosses(bosses);
       });
-  }, [user]);
+  }, [props.user]);
 
   useEffect(() => {
     fetch(`/guides`)
@@ -43,39 +38,40 @@ function App(props) {
       .then((guides) => {
         props.fetchGuides(guides);
       });
-  }, [user]);
+  }, [props.user]);
 
   const navigate = useNavigate();
 
   return (
     <div className="App">
-      {user && <NavBar />}
+      {props.user && <NavBar />}
       <Routes>
         <Route
           path="/login"
-          element={<LoginPage setUser={loginUser} navigate={navigate} />}
+          element={<LoginPage setUser={props.loginUser} navigate={navigate} />}
         />
 
         <Route
           path="/signup"
-          element={<SignupPage navigate={navigate} setUser={loginUser} />}
+          element={<SignupPage navigate={navigate} setUser={props.loginUser} />}
         />
 
         <Route
           path="/guides/:id"
-          element={user ? <GuidePage /> : <Navigate replace to="/" />}
+          element={props.user ? <GuidePage /> : <Navigate replace to="/" />}
+          s
         />
 
         <Route path="/guides" element={<GuideContainer />} />
 
         <Route
           path="/me"
-          element={user ? <UserPage /> : <Navigate replace to="/" />}
+          element={props.user ? <UserPage /> : <Navigate replace to="/" />}
         />
 
         <Route
           path="/logout"
-          element={<LogOut setUser={setUser} navigate={navigate} />}
+          element={<LogOut setUser={props.loginUser} navigate={navigate} />}
         />
 
         <Route path="/" element={<HomePage />} />
@@ -86,6 +82,7 @@ function App(props) {
 const mapStateToProps = (state) => {
   return {
     guides: state.guides,
+    user: state.user,
   };
 };
 const mapDispatchToProps = (dispatch) => {

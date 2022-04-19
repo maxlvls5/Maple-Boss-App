@@ -39,9 +39,7 @@ function SignupPage({ navigate, setUser }) {
 
   return (
     <div>
-      <div align="center" className="form-image">
-        {/* <img src={require("../images/eatme_signup.png")} alt="eatme_signup" /> */}
-      </div>
+      <div align="center" className="form-image"></div>
       <h1 align="center">Signup!</h1>
       <div className="form">
         <form className="signup-form" onSubmit={(e) => handleSubmit(e)}>

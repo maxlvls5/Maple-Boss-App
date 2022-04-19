@@ -24,8 +24,8 @@ function HomePage({ user }) {
           </NavLink>
         </div>
       )}
-      <h3>Top Bosses</h3>
-      <div className="container"></div>
+      {/* <h3>Top Bosses</h3>
+      <div className="container"></div> */}
     </div>
   );
 }

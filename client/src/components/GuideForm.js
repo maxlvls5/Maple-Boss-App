@@ -65,8 +65,8 @@ function NewGuideForm(props) {
   };
 
   return (
-    <div>
-      <h2>New Guide Form:</h2>
+    <div className="guide-form">
+      <h2>Make A New Guide!:</h2>
       <form onSubmit={handleOnSubmit}>
         <select value={bossId} onChange={handleBossChange}>
           <option key={0} value={0}>
@@ -85,7 +85,7 @@ function NewGuideForm(props) {
           value={guideDetails}
           onChange={handleGuideChange}
         ></textarea>
-        <input type="submit" />
+        <input className="submit-button" type="submit" />
       </form>
     </div>
   );

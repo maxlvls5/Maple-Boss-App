@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { Button, Icon, Form } from "semantic-ui-react";
 
 function LoginPage({ setUser, navigate }) {
   const [username, setUsername] = useState("");
@@ -30,35 +31,83 @@ function LoginPage({ setUser, navigate }) {
 
   return (
     <div>
-      <div align="center" className="form-image">
-        {/* <img src={require("../images/eatme_login.png")} alt="eatme_login" /> */}
-      </div>
+      <div align="center"></div>
       <h1 align="center">Welcome Back Gamer</h1>
       <div className="glass">
-        <form className="login-form" onSubmit={(e) => handleLogin(e)}>
-          <label>Username</label>
+        <Form className="login-form" onSubmit={(e) => handleLogin(e)}>
+          <Form.Field>
+            <label className="login-label">Username</label>
+            <input
+              type="text"
+              value={username}
+              placeholder="username"
+              onChange={(e) => handleUsername(e)}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label className="login-label">Password</label>
+            <input
+              type="password"
+              value={password}
+              placeholder="password"
+              onChange={(e) => handlePassword(e)}
+            />
+          </Form.Field>
+
+          <Button className="login-Button" type="submit" animated>
+            <Button.Content visible>Login!</Button.Content>
+            <Button.Content hidden>
+              <Icon name="sign-in" />
+            </Button.Content>
+          </Button>
+
+          <NavLink to="/signup">
+            <div align="center" className="Signup">
+              <Button animated>
+                <Button.Content visible>SignUp!</Button.Content>
+                <Button.Content hidden>
+                  <Icon name="sign-in" />
+                </Button.Content>
+              </Button>
+            </div>
+          </NavLink>
+        </Form>
+        {/* <form className="login-form" onSubmit={(e) => handleLogin(e)}>
+          <label className="login-label">Username</label>
           <input
             type="text"
             value={username}
             placeholder="username"
             onChange={(e) => handleUsername(e)}
           />
-          <label>Password</label>
+          <label className="login-label">Password</label>
           <input
             type="password"
             value={password}
             placeholder="password"
             onChange={(e) => handlePassword(e)}
           />
-          <div align="center" className="feed-me">
+          <div align="center" className="login-button">
             <button type="submit">Login</button>
+
+            <Button type="submit" animated>
+              <Button.Content visible>Login!</Button.Content>
+              <Button.Content hidden>
+                <Icon name="sign-in" />
+              </Button.Content>
+            </Button>
           </div>
           <NavLink to="/signup">
             <div align="center" className="Signup">
-              <button> SignUp </button>
+              <Button animated>
+                <Button.Content visible>SignUp!</Button.Content>
+                <Button.Content hidden>
+                  <Icon name="sign-in" />
+                </Button.Content>
+              </Button>
             </div>
           </NavLink>
-        </form>
+        </form> */}
       </div>
     </div>
   );
