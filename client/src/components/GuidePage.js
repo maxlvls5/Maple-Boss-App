@@ -38,33 +38,35 @@ function GuidePage(props) {
   console.log(guide);
 
   return (
-    <div className="glass">
-      {props.user?.id !== guide.user_id ? (
-        ""
-      ) : editMode ? (
-        <GuideForm
-          currentGuide={guide}
-          setCurrentGuide={setGuide}
-          setEditMode={setEditMode}
-        />
-      ) : (
-        <button onClick={handleEditClick}> Edit your guide! </button>
-      )}
-      {props.user?.id !== guide.user_id ? (
-        ""
-      ) : (
-        <button onClick={handleDeleteClick}> DELETE THIS GUIDE! </button>
-      )}
+    <div className="glass guide-container">
       <img
         className="glass2"
         src={guide.boss && guide.boss.image}
         alt={guide.boss && guide.boss.name}
       />
+      <div>
+        {props.user?.id !== guide.user_id ? (
+          ""
+        ) : (
+          <button onClick={handleDeleteClick}> DELETE THIS GUIDE! </button>
+        )}
+        {props.user?.id !== guide.user_id ? (
+          ""
+        ) : editMode ? (
+          <GuideForm
+            currentGuide={guide}
+            setCurrentGuide={setGuide}
+            setEditMode={setEditMode}
+          />
+        ) : (
+          <button onClick={handleEditClick}> Edit your guide! </button>
+        )}
+      </div>
       <h1 className="guide-title">{guide.title}</h1>
-      {/* <h1>{guide.boss && guide.boss.name} -</h1>
-      <h4>💠 Level:{guide.boss.level}</h4>
-      <h4>❤️ Total HP:{guide.boss.hp}</h4>
-      <h5>⚔️ Boss Drops: {guide.boss.drop}</h5> */}
+      <h1>{guide.boss && guide.boss.name} -</h1>
+      <h4>💠 Level:{guide.boss?.level}</h4>
+      <h4>❤️ Total HP:{guide.boss?.hp}</h4>
+      <h5>⚔️ Boss Drops: {guide.boss?.drop}</h5>
       <p>{guide.details}</p>
     </div>
   );

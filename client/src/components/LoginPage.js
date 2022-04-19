@@ -54,7 +54,12 @@ function LoginPage({ setUser, navigate }) {
             />
           </Form.Field>
 
-          <Button className="login-Button" type="submit" animated>
+          <Button
+            color="yellow"
+            className="login-Button"
+            type="submit"
+            animated
+          >
             <Button.Content visible>Login!</Button.Content>
             <Button.Content hidden>
               <Icon name="sign-in" />
@@ -63,7 +68,7 @@ function LoginPage({ setUser, navigate }) {
 
           <NavLink to="/signup">
             <div align="center" className="Signup">
-              <Button animated>
+              <Button color="olive" animated>
                 <Button.Content visible>SignUp!</Button.Content>
                 <Button.Content hidden>
                   <Icon name="sign-in" />

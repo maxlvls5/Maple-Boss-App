@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { Button, Form, Icon } from "semantic-ui-react";
 
 function SignupPage({ navigate, setUser }) {
   const [username, setUsername] = useState("");
@@ -41,8 +42,8 @@ function SignupPage({ navigate, setUser }) {
     <div>
       <div align="center" className="form-image"></div>
       <h1 align="center">Signup!</h1>
-      <div className="form">
-        <form className="signup-form" onSubmit={(e) => handleSubmit(e)}>
+      <div className="glass">
+        {/* <form className="signup-form" onSubmit={(e) => handleSubmit(e)}>
           <label>Username</label>
           <input
             type="text"
@@ -64,7 +65,7 @@ function SignupPage({ navigate, setUser }) {
             placeholder="password"
             onChange={(e) => handleConfirm(e)}
           />
-          <div align="center" className="submit-horde">
+          <div align="center" className="submit-newuser">
             <button type="submit">Submit!</button>
           </div>
           <NavLink to="/login">
@@ -72,7 +73,50 @@ function SignupPage({ navigate, setUser }) {
               <button> Login </button>
             </div>
           </NavLink>
-        </form>
+        </form> */}
+
+        <Form className="login-form" onSubmit={(e) => handleSubmit(e)}>
+          <Form.Field>
+            <label>Username</label>
+            <input
+              type="text"
+              value={username}
+              placeholder="username"
+              onChange={(e) => handleUsername(e)}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label> Password</label>
+            <input
+              type="password"
+              value={password}
+              placeholder="password"
+              onChange={(e) => handlePassword(e)}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label> Confirm Password</label>
+            <input
+              type="password"
+              value={passwordConfirm}
+              placeholder="password"
+              onChange={(e) => handleConfirm(e)}
+            />
+          </Form.Field>
+          <Button color="olive" className="login-Button" type="submit">
+            Submit!
+          </Button>
+          <NavLink to="/login">
+            <div align="center" className="Signup">
+              <Button color="yellow" className="Signup" type="submit" animated>
+                <Button.Content visible>Login!</Button.Content>
+                <Button.Content hidden>
+                  <Icon name="sign-in" />
+                </Button.Content>
+              </Button>
+            </div>
+          </NavLink>
+        </Form>
       </div>
     </div>
   );

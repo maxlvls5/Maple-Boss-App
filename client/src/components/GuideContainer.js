@@ -7,7 +7,7 @@ function GuideContainer(props) {
   console.log(props.guides);
   return (
     <div className="glass">
-      <h1 align="center">guides</h1>
+      <h1 align="center">Guides</h1>
       <div>
         {props.guides.map((guide) => (
           <GuideCard key={guide.id} guide={guide} />

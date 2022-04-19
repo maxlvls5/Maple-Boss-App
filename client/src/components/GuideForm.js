@@ -64,6 +64,10 @@ function NewGuideForm(props) {
       });
   };
 
+  // semantic dropdown area
+
+  //
+
   return (
     <div className="guide-form">
       <h2>Make A New Guide!:</h2>
