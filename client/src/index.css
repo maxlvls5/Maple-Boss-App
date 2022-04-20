@@ -123,3 +123,9 @@ html {
 .guide-form-standard {
   width: 150px;
 }
+
+.guide-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

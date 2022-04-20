@@ -3,7 +3,6 @@ import GuideCard from "./GuideCard";
 import { connect } from "react-redux";
 
 function UserPage(props) {
-  console.log(props);
   return (
     <div className="glass">
       <h1 align="center">{props.user.username}'s Created Guides</h1>

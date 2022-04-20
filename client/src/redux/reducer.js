@@ -49,3 +49,4 @@ export default rootReducer;
 //  switch statement takes in action and if the type is "ADD_GUIDE" it will run that case (guide reducer function will always run)
 // line 11 - checks for id of guide wanted, if not the one we are changing it will return the original, but if id matches it will return the updated guide
 // line 17 - filter will only return guide that has a different id than the one that was just deleted
+// dispatch is a action that goes to the reducer which updates state and sends it back to store

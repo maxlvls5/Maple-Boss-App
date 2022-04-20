@@ -1,6 +1,6 @@
 class GuidesController < ApplicationController
     before_action :authorized
-    skip_before_action :authorized, only: [:index, :create, :show, :update, :destroy]
+    skip_before_action :authorized
 
     def index
         guides = Guide.all

@@ -35,8 +35,6 @@ function GuidePage(props) {
       .then((r) => r.json())
       .then(setGuide);
   }, []);
-  console.log(id);
-  console.log(guide);
 
   return (
     <div className="glass guide-page-container">

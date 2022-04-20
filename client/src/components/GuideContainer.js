@@ -4,13 +4,14 @@ import GuideForm from "./GuideForm";
 import GuideCard from "./GuideCard";
 
 function GuideContainer(props) {
-  console.log(props.guides);
+  const getBoss = (guide) =>
+    props.bosses.find((boss) => boss.id === guide.boss_id);
   return (
     <div className="glass guide-container">
       <h1 align="center">Guides</h1>
       <div>
         {props.guides.map((guide) => (
-          <GuideCard key={guide.id} guide={guide} />
+          <GuideCard key={guide.id} guide={guide} boss={getBoss(guide)} />
         ))}
       </div>
       <GuideForm />
@@ -23,6 +24,7 @@ const mapStateToProps = (state) => {
   return {
     user: state.user,
     guides: state.guides,
+    bosses: state.bosses,
   };
 };
 export default connect(mapStateToProps)(GuideContainer);
