@@ -80,7 +80,7 @@ function GuidePage(props) {
       <h4>💠 Level:{guide.boss?.level}</h4>
       <h4>❤️ Total HP:{guide.boss?.hp}</h4>
       <h5>⚔️ Boss Drops: {guide.boss?.drop}</h5>
-      <p>{guide.details}</p>
+      <p>Guide -{guide.details}</p>
     </div>
   );
 }
