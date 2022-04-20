@@ -44,7 +44,7 @@ function App(props) {
 
   return (
     <div className="App">
-      {props.user && <NavBar />}
+      {props.user?.id && <NavBar />}
       <Routes>
         <Route
           path="/login"
@@ -58,15 +58,20 @@ function App(props) {
 
         <Route
           path="/guides/:id"
-          element={props.user ? <GuidePage /> : <Navigate replace to="/" />}
+          element={props.user?.id ? <GuidePage /> : <Navigate replace to="/" />}
           s
         />
 
-        <Route path="/guides" element={<GuideContainer />} />
+        <Route
+          path="/guides"
+          element={
+            props.user?.id ? <GuideContainer /> : <Navigate replace to="/" />
+          }
+        />
 
         <Route
           path="/me"
-          element={props.user ? <UserPage /> : <Navigate replace to="/" />}
+          element={props.user?.id ? <UserPage /> : <Navigate replace to="/" />}
         />
 
         <Route

@@ -32,10 +32,15 @@ code {
   padding: 15px;
 }
 
-.guide-container {
+.guide-page-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 500px;
+}
+
+.guide-container {
+  width: 600px;
 }
 
 .glass2 {
@@ -95,9 +100,26 @@ html {
 
 .guide-form {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 300px;
+  align-items: center;
 }
 
+.guide-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .submit-button {
   display: flex;
+}
+
+.guide-form-details {
+  width: 500px;
+  height: 150px;
+}
+
+.guide-form-standard {
+  width: 150px;
 }

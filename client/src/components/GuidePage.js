@@ -4,6 +4,7 @@ import GuideForm from "./GuideForm";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { deleteGuide } from "../redux/actions";
+import { Button, Icon } from "semantic-ui-react";
 
 function GuidePage(props) {
   const [guide, setGuide] = useState({});
@@ -38,7 +39,7 @@ function GuidePage(props) {
   console.log(guide);
 
   return (
-    <div className="glass guide-container">
+    <div className="glass guide-page-container">
       <img
         className="glass2"
         src={guide.boss && guide.boss.image}
@@ -48,7 +49,13 @@ function GuidePage(props) {
         {props.user?.id !== guide.user_id ? (
           ""
         ) : (
-          <button onClick={handleDeleteClick}> DELETE THIS GUIDE! </button>
+          <Button color="red" onClick={handleDeleteClick} animated>
+            <Button.Content visible>DELETE THIS GUIDE!</Button.Content>
+            <Button.Content hidden>
+              <Icon name="trash alternate" />
+            </Button.Content>
+          </Button>
+          // <button onClick={handleDeleteClick}> DELETE THIS GUIDE! </button>
         )}
         {props.user?.id !== guide.user_id ? (
           ""
@@ -59,7 +66,13 @@ function GuidePage(props) {
             setEditMode={setEditMode}
           />
         ) : (
-          <button onClick={handleEditClick}> Edit your guide! </button>
+          <Button color="teal" onClick={handleEditClick} animated>
+            <Button.Content visible>Edit your guide!</Button.Content>
+            <Button.Content hidden>
+              <Icon name="edit" />
+            </Button.Content>
+          </Button>
+          // <button onClick={handleEditClick}> Edit your guide! </button>
         )}
       </div>
       <h1 className="guide-title">{guide.title}</h1>

@@ -16,7 +16,7 @@ function HomePage(props) {
         />
         <p>Welcome to MapleBoss</p>
       </div>
-      {!props.user && (
+      {!props.user?.id && (
         <div className="signup-login-container">
           <NavLink to="/signup">
             <Button color="teal">SignUp!</Button>

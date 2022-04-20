@@ -6,7 +6,7 @@ function UserPage(props) {
   console.log(props);
   return (
     <div className="glass">
-      <h1 align="center">{props.user.username}'s Page</h1>
+      <h1 align="center">{props.user.username}'s Created Guides</h1>
       {props.guides.map((guide) => (
         <GuideCard key={guide.id} guide={guide} />
       ))}

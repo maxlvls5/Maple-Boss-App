@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { addGuide, updateGuide } from "../redux/actions";
+import { Button } from "semantic-ui-react";
 
 function NewGuideForm(props) {
   console.log(props);
@@ -65,14 +66,25 @@ function NewGuideForm(props) {
   };
 
   // semantic dropdown area
-
-  //
+  // const bossOptions = [
+  //   {
+  //   key: 'Darknell',
+  //   text: 'Darknell',
+  //   value: 'Darknell',
+  //   image: { avatar:true, src: 'https://res.cloudinary.com/dtglqdhwm/image/upload/v1650406856/mini_darknell_vsihax.png'}
+  // //   }
+  // ]
+  // //
 
   return (
-    <div className="guide-form">
-      <h2>Make A New Guide!:</h2>
-      <form onSubmit={handleOnSubmit}>
-        <select value={bossId} onChange={handleBossChange}>
+    <div className="guide-form-container">
+      <h2>Make A New Guide:</h2>
+      <form className="guide-form" onSubmit={handleOnSubmit}>
+        <select
+          className="guide-form-standard"
+          value={bossId}
+          onChange={handleBossChange}
+        >
           <option key={0} value={0}>
             select a boss
           </option>
@@ -82,14 +94,23 @@ function NewGuideForm(props) {
             </option>
           ))}
         </select>
-        <input type="text" onChange={handleTitleChange} value={guideTitle} />
+        <input
+          className="guide-form-standard"
+          type="text"
+          onChange={handleTitleChange}
+          value={guideTitle}
+        />
 
         <textarea
+          className="guide-form-details"
           placeholder="Guide Content..."
           value={guideDetails}
           onChange={handleGuideChange}
         ></textarea>
-        <input className="submit-button" type="submit" />
+        <Button color="olive" className="submit-button" type="submit">
+          Submit!
+        </Button>
+        {/* <input className="submit-button" type="submit" /> */}
       </form>
     </div>
   );
