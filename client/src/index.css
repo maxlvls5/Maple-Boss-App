@@ -36,7 +36,7 @@ code {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 500px;
+  width: 600px;
 }
 
 .guide-container {
@@ -92,6 +92,7 @@ html {
 
 .guide-title {
   text-decoration: underline;
+  align-items: center;
 }
 
 .Signup {
@@ -128,4 +129,8 @@ html {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+.user-container {
+  width: 500px;
 }
